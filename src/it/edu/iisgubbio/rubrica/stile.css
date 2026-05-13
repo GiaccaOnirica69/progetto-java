@@ -1,0 +1,72 @@
+/* FONT stile iPhone */
+.root {
+    -fx-font-family: -apple-system, "Helvetica Neue", Helvetica, Arial;
+    -fx-background-color: #FFFFFF;
+}
+
+/* LABEL stile iOS */
+.label {
+    -fx-text-fill: #1C1C1E;
+    -fx-font-size: 14px;
+    -fx-font-weight: 500;
+}
+
+/* TEXTFIELD stile iPhone */
+.text-field {
+    -fx-background-color: #F2F2F7;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: #D1D1D6;
+    -fx-border-width: 1;
+    -fx-padding: 6 10 6 10;
+    -fx-font-size: 14px;
+}
+
+/* BOTTONI stile iOS */
+.button {
+    -fx-background-color: #007AFF;
+    -fx-text-fill: white;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 12;
+    -fx-padding: 8 16 8 16;
+}
+
+.button:hover {
+    -fx-background-color: #0A84FF;
+}
+
+/* RADIOBUTTON stile iPhone */
+.radio-button {
+    -fx-font-size: 14px;
+    -fx-text-fill: #1C1C1E;
+}
+
+.radio-button .radio {
+    -fx-border-color: #007AFF;
+    -fx-border-width: 2;
+    -fx-background-color: white;
+}
+
+.radio-button:selected .radio {
+    -fx-background-color: #007AFF;
+}
+
+/* LISTVIEW stile rubrica iPhone */
+.list-view {
+    -fx-background-color: white;
+    -fx-control-inner-background: white;
+    -fx-padding: 0;
+}
+
+.list-cell {
+    -fx-font-size: 16px;
+    -fx-padding: 10 15 10 15;
+    -fx-border-color: #E5E5EA;
+    -fx-border-width: 0 0 1 0;
+}
+
+.list-cell:filled:selected {
+    -fx-background-color: #DDEBFF;
+    -fx-text-fill: #007AFF;
+}
