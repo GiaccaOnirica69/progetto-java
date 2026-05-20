@@ -16,6 +16,7 @@ public class RubricaApp extends Application{
 	    Label lTelefono = new Label("Telefono");
 	    Label lExtra = new Label("Email/Azienda");
 	    Label lTipo = new Label("Tipo");
+	    Label lCerca = new Label("Cerca:");
 	    Button bRipristina = new Button("Ripristina");
 	    TextField tfNome = new TextField();
 	    TextField tfCognome = new TextField();
@@ -25,52 +26,40 @@ public class RubricaApp extends Application{
 	    RadioButton rbPersonale = new RadioButton("Personale");
 	    RadioButton rbLavoro = new RadioButton("Lavoro");
 	    ToggleGroup gruppo = new ToggleGroup();
-
 	    Button bAggiungi = new Button("Aggiungi");
 	    TextField tfRicerca = new TextField();
 	    Button bFiltra = new Button("Filtra");
-
 	    ListView<Contatto> lvContatti = new ListView<>();
-
 	    RubricaManager manager = new RubricaManager();
 	    ArrayList<Contatto> elenco = new ArrayList<>();
 
 	    public void start(Stage finestra) throws Exception {
-
 	        elenco = manager.carica();
 	        lvContatti.getItems().addAll(elenco);
-
 	        rbPersonale.setToggleGroup(gruppo);
 	        rbLavoro.setToggleGroup(gruppo);
 	        rbPersonale.setSelected(true);
-
 	        GridPane griglia = new GridPane();
 	        griglia.setPadding(new Insets(10));
 	        griglia.setHgap(10);
 	        griglia.setVgap(10);
-
 	        griglia.add(lNome, 0, 0);
 	        griglia.add(tfNome, 1, 0);
-
 	        griglia.add(lCognome, 0, 1);
 	        griglia.add(tfCognome, 1, 1);
-
 	        griglia.add(lTelefono, 0, 2);
 	        griglia.add(tfTelefono, 1, 2);
-
 	        griglia.add(lExtra, 0, 3);
 	        griglia.add(tfExtra, 1, 3);
-
 	        griglia.add(lTipo, 0, 4);
 	        griglia.add(rbPersonale, 1, 4);
 	        griglia.add(rbLavoro, 1, 5);
-
 	        griglia.add(bAggiungi, 0, 6, 2, 1);
-	        griglia.add(bRipristina, 0, 9, 2, 1);
-	        griglia.add(new Label("Ricerca"), 0, 7);
-	        griglia.add(tfRicerca, 1, 7);
-	        griglia.add(bFiltra, 0, 8, 2, 1);
-	        griglia.add(bPulisci, 0, 10, 2, 1);
+	        griglia.add(bRipristina, 0, 10, 2, 1);
+	        griglia.add(lCerca, 0, 7);	        
+	        griglia.add(tfRicerca, 1, 8);
+	        griglia.add(bFiltra, 0, 9, 2, 1);
+	        griglia.add(bPulisci, 0, 7, 2, 1);
 	        griglia.add(lvContatti, 3, 0, 1, 10);
 	        bRipristina.setOnAction(e -> ripristina());
 	        bPulisci.setOnAction(e -> pulisciCampi());
@@ -121,10 +110,9 @@ public class RubricaApp extends Application{
 
 	    void filtra() {
 	        String testo = tfRicerca.getText().toLowerCase();
-
-	        lvContatti.getItems().clear();
-
-	        for (Contatto c : elenco) {
+	        lvContatti.getItems().clear();        
+	        for (int z = 0; z < elenco.size(); z++) {
+	            Contatto c = elenco.get(z);
 	            if (c.nome.toLowerCase().contains(testo) ||
 	                c.cognome.toLowerCase().contains(testo)) {
 	                lvContatti.getItems().add(c);
