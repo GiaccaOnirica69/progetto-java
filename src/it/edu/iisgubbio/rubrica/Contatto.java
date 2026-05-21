@@ -10,7 +10,7 @@ public class Contatto {
         this.cognome = cognome;
         this.telefono = telefono;
     }
-
+    
     public String getTipo() {
         return "BASE";
     }
@@ -54,4 +54,5 @@ public class Contatto {
             return "[Lavoro] " + nome + " " + cognome + " - " + telefono + " - " + azienda;
         }
     }
+    
 }
