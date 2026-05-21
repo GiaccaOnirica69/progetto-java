@@ -18,7 +18,7 @@ public class RubricaApp extends Application{
 	    Label lTipo = new Label("Tipo");
 	    Label lCerca = new Label("Cerca:");
 	    Button bRipristina = new Button("Ripristina");
-	    TextField tfNome = new TextField();
+	    TextField tfNomePersona = new TextField();
 	    TextField tfCognome = new TextField();
 	    TextField tfTelefono = new TextField();
 	    TextField tfExtra = new TextField();
@@ -44,7 +44,7 @@ public class RubricaApp extends Application{
 	        griglia.setHgap(10);
 	        griglia.setVgap(10);
 	        griglia.add(lNome, 0, 0);
-	        griglia.add(tfNome, 1, 0);
+	        griglia.add(tfNomePersona, 1, 0);
 	        griglia.add(lCognome, 0, 1);
 	        griglia.add(tfCognome, 1, 1);
 	        griglia.add(lTelefono, 0, 2);
@@ -76,7 +76,7 @@ public class RubricaApp extends Application{
 	        finestra.show();
 	    }
 	    void pulisciCampi() {
-	        tfNome.clear();
+	        tfNomePersona.clear();
 	        tfCognome.clear();
 	        tfTelefono.clear();
 	        tfExtra.clear();
@@ -89,33 +89,36 @@ public class RubricaApp extends Application{
 	    }
 
 	    void aggiungi() {
-	        String nome = tfNome.getText();
-	        String cognome = tfCognome.getText();
-	        String telefono = tfTelefono.getText();
-	        String extra = tfExtra.getText();
+	    	 String nome = tfNomePersona.getText();
+	    	    String cognome = tfCognome.getText();
+	    	    String telefono = tfTelefono.getText();
+	    	    String extra = tfExtra.getText();
 
-	        Contatto c;
+	    	    Contatto nuovoContatto;
 
-	        if (rbPersonale.isSelected()) {
-	            c = new Contatto.ContattoPersonale(nome, cognome, telefono, extra);
-	        } else {
-	            c = new Contatto.ContattoLavoro(nome, cognome, telefono, extra);
-	        }
+	    	    if (rbPersonale.isSelected()) {
+	    	        nuovoContatto = new Contatto.ContattoPersonale(nome, cognome, telefono, extra);
+	    	    } else {
+	    	        nuovoContatto = new Contatto.ContattoLavoro(nome, cognome, telefono, extra);
+	    	    }
 
-	        elenco.add(c);
-	        lvContatti.getItems().add(c);
-	        manager.salva(c);
-	    }
+	    	    elenco.add(nuovoContatto);
+	    	    lvContatti.getItems().add(nuovoContatto);
+	    	    manager.salva(nuovoContatto);
+	    	}
 
 
 	    void filtra() {
 	        String testo = tfRicerca.getText().toLowerCase();
 	        lvContatti.getItems().clear();        
-	        for (int z = 0; z < elenco.size(); z++) {
-	            Contatto c = elenco.get(z);
-	            if (c.nome.toLowerCase().contains(testo) ||
-	                c.cognome.toLowerCase().contains(testo)) {
-	                lvContatti.getItems().add(c);
+	        for (int indiceContatto = 0; indiceContatto < elenco.size(); indiceContatto++) {
+
+	            Contatto contattoCorrente = elenco.get(indiceContatto);
+
+	            if (contattoCorrente.nome.toLowerCase().contains(testo) ||
+	                contattoCorrente.cognome.toLowerCase().contains(testo)) {
+
+	                lvContatti.getItems().add(contattoCorrente);
 	            }
 	        }
 	    }
