@@ -1,6 +1,7 @@
 package it.edu.iisgubbio.rubrica;
 
 public class Contatto {
+
     public String nome;
     public String cognome;
     public String telefono;
@@ -10,16 +11,16 @@ public class Contatto {
         this.cognome = cognome;
         this.telefono = telefono;
     }
-    
+
     public String getTipo() {
         return "BASE";
     }
 
+    @Override
     public String toString() {
-        return nome + " " + cognome + " - " + telefono;
+        return nome + " " + cognome + " (" + telefono + ")";
     }
 
-    // SOTTOCLASSE PERSONALE (STATIC!)
     public static class ContattoPersonale extends Contatto {
         public String email;
 
@@ -28,16 +29,17 @@ public class Contatto {
             this.email = email;
         }
 
+        @Override
         public String getTipo() {
             return "PERSONALE";
         }
 
+        @Override
         public String toString() {
-            return "[Personale] " + nome + " " + cognome + " - " + telefono + " - " + email;
+            return nome + " " + cognome + " - " + telefono + " - " + email;
         }
     }
 
-    // SOTTOCLASSE LAVORO (STATIC!)
     public static class ContattoLavoro extends Contatto {
         public String azienda;
 
@@ -46,13 +48,14 @@ public class Contatto {
             this.azienda = azienda;
         }
 
+        @Override
         public String getTipo() {
             return "LAVORO";
         }
 
+        @Override
         public String toString() {
-            return "[Lavoro] " + nome + " " + cognome + " - " + telefono + " - " + azienda;
+            return nome + " " + cognome + " - " + telefono + " - " + azienda;
         }
     }
-    
 }
